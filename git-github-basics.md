@@ -63,4 +63,43 @@ modified: todo.txt
 | **Local repo / `.git`** (after `git commit`) | Permanently saved history |
 
 Staging lets you pick exactly which changes go into each commit — like packing a suitcase before shipping it, instead of being forced to save everything that's currently different.
-small changes to see in the local - line updated in the github page directly
+## `git pull origin main` — Bringing GitHub's Changes to Your Local System
+
+`git pull origin main` is used to bring changes made on GitHub (the remote repository) down into your local system. It combines two steps in one command:
+
+1. **Fetch** — checks GitHub for any new commits your local repo doesn't have yet.
+2. **Merge** — automatically combines those new commits into your current local files.
+
+### Why `git pull` Instead of `git clone` Again?
+
+`git clone` copies the **entire repository** — used only once, when you're setting up the project locally for the first time.
+
+`git pull`, on the other hand, only brings down the **changes made since your last sync** — it's much faster and doesn't re-download or touch files that haven't changed.
+
+### ⚠️ A Note on Conflicts
+
+`git pull` works smoothly *only if* your local files don't have conflicting uncommitted changes in the same spot GitHub was edited. If both you and GitHub changed the same line differently, Git raises a **merge conflict** and asks you to resolve it manually before continuing.
+
+### Example: Editing on GitHub, Then Pulling Locally
+
+1. Go to your repo on GitHub, edit a file directly on the website (e.g. add a line to `notes.md`), and click **Commit changes**. This saves the change to GitHub only — your local folder doesn't know about it yet.
+
+2. Back in your local terminal, run `git status`:
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
+
+   Your local folder still looks unchanged — it hasn't checked GitHub yet.
+
+3. Run:`git pull origin main`
+
+   Git contacts GitHub, sees the new commit, downloads it, and merges it into your local files automatically.
+
+4. Open the file locally — the change made on GitHub now appears in your local copy. You can also run `git log` to see the new commit show up in your local history.
+
+### Quick Summary
+
+| Command | What It Does |
+|---|---|
+| `git clone` | Downloads the **entire repo** — used once, at the start |
+| `git pull origin main` | Downloads and merges only the **new changes** since your last sync |
