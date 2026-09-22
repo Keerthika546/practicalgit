@@ -63,3 +63,4 @@ modified: todo.txt
 | **Local repo / `.git`** (after `git commit`) | Permanently saved history |
 
 Staging lets you pick exactly which changes go into each commit — like packing a suitcase before shipping it, instead of being forced to save everything that's currently different.
+small changes to see in the local - line updated in the github page directly
